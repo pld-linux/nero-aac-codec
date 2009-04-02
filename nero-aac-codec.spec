@@ -50,17 +50,16 @@ and install the wla release.
 %install
 rm -rf $RPM_BUILD_ROOT
 %if %{without license_agreement}
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{base_name}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}}
+install %{_specdir}/%{base_name}.spec $RPM_BUILD_ROOT%{_datadir}
 
 sed -e '
 	s/@BASE_NAME@/%{base_name}/g
 	s/@TARGET_CPU@/%{_target_cpu}/g
 	s-@VERSION@-%{version}-g
 	s-@RELEASE@-%{release}-g
-	s,@SPECFILE@,%{_datadir}/%{base_name}/%{base_name}.spec,g
+	s,@SPECFILE@,%{_datadir}/%{base_name}.spec,g
 ' %{SOURCE1} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
-
-install %{_specdir}/%{base_name}.spec $RPM_BUILD_ROOT%{_datadir}/%{base_name}
 
 %else
 
@@ -81,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %if %{without license_agreement}
 %attr(755,root,root) %{_bindir}/%{base_name}.install
-%{_datadir}/%{base_name}
+%{_datadir}/%{base_name}.spec
 %else
 %doc *.txt
 %attr(755,root,root) %{_bindir}/*
