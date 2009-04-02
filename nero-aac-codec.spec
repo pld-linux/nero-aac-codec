@@ -1,9 +1,6 @@
 # NOTE:
 # - requires GLIBC_2.4
 #
-# TODO
-# - http://security.gentoo.org/glsa/glsa-200803-08.xml
-#
 # Conditional build:
 %bcond_with	license_agreement	# generates package
 
