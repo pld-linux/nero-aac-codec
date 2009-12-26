@@ -19,10 +19,11 @@ Group:		Libraries
 %if %{with license_agreement}
 Source0:	http://ftp6.nero.com/tools/NeroDigitalAudio.zip
 %else
-Source1:	license-installer.sh
+Source1:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
+# Source1-md5:	4fb1600353dd57fe088e0b12fb0ecac2
 %endif
 %if %{without license_agreement}
-Requires:	rpm-build-tools
+Requires:	rpm-build-tools >= 4.4.35
 %endif
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,6 +57,7 @@ sed -e '
 	s-@VERSION@-%{version}-g
 	s-@RELEASE@-%{release}-g
 	s,@SPECFILE@,%{_datadir}/%{base_name}.spec,g
+	s,@DATADIR@,%{_datadir}/%{base_name},g
 ' %{SOURCE1} > $RPM_BUILD_ROOT%{_bindir}/%{base_name}.install
 
 %else
