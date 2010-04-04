@@ -4,7 +4,7 @@
 # Conditional build:
 %bcond_with	license_agreement	# generates package
 
-%define		rel 0.1
+%define		rel 0.2
 %define		base_name	nero-aac-codec
 Summary:	Nero AAC Codec
 %if %{with license_agreement}
@@ -20,10 +20,11 @@ Group:		Libraries
 Source0:	http://ftp6.nero.com/tools/NeroDigitalAudio.zip
 %else
 Source1:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
-# Source1-md5:	4fb1600353dd57fe088e0b12fb0ecac2
+# Source1-md5:	329c25f457fea66ec502b7ef70cb9ede
 %endif
 %if %{without license_agreement}
-Requires:	rpm-build-tools >= 4.4.35
+Requires:	rpm-build-macros >= 1.544
+Requires:	rpm-build-tools >= 4.4.37
 %endif
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
