@@ -22,6 +22,7 @@ Source0:	http://ftp6.nero.com/tools/NeroDigitalAudio.zip
 Source1:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
 # Source1-md5:	329c25f457fea66ec502b7ef70cb9ede
 %endif
+%{?with_license_agreement:BuildRequires:	unzip}
 %if %{without license_agreement}
 Requires:	rpm-build-macros >= 1.544
 Requires:	rpm-build-tools >= 4.4.37
