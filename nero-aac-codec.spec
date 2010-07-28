@@ -24,8 +24,8 @@ Source1:	http://svn.pld-linux.org/svn/license-installer/license-installer.sh
 %endif
 %{?with_license_agreement:BuildRequires:	unzip}
 %if %{without license_agreement}
-Requires:	rpm-build-macros >= 1.544
 Requires:	rpm-build-tools >= 4.4.37
+Requires:	rpmbuild(macros) >= 1.544
 %endif
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
